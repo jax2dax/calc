@@ -1,0 +1,52 @@
+/*
+styles.css
+Role: Minimal, responsive, accessible toolbar and canvas layout. Keep styling uncluttered.
+Comments explain design choices.
+*/
+
+/* Reset-ish */
+* { box-sizing: border-box; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+html,body { height:100%; margin:0; background:#f7f7f8; color:#111; }
+.visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
+
+/* Top toolbar */
+.toolbar {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px;
+  background: #fff;
+  border-bottom:1px solid #e4e4e7;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.toolbar .btn { padding:6px 10px; border-radius:6px; border:1px solid #d0d0d5; background:#fff; cursor:pointer; }
+.toolbar .btn.primary { background:#0b5fff; color:#fff; border-color:#0b5fff; }
+.toolbar .btn-file input[type=file]{ display:none; }
+.left-tools, .center-tools, .right-tools { display:flex; gap:6px; align-items:center; }
+
+/* layout of main viewer */
+main { padding:12px; display:flex; gap:12px; justify-content:center; align-items:flex-start; }
+.canvas-wrap { box-shadow:0 6px 20px rgba(0,0,0,0.06); background:#fff; padding:8px; border-radius:8px; max-width:calc(100vw - 40px); }
+/* PDF canvas styles: will be sized by JS to viewport CSS size */
+#pdf-canvas, #overlay-canvas { display:block; max-width:100%; height:auto; }
+
+/* ensure overlay sits exactly on top */
+#overlay-canvas { position:absolute; left:8px; top:8px; pointer-events:auto; }
+
+.drop-area { display:none; border:2px dashed #cbd5e1; padding:18px; border-radius:8px; margin:12px 0; text-align:center; color:#6b7280; }
+.drop-area.active { display:block; background:#f1f5f9; }
+
+/* status messages */
+.status { margin-top:12px; color:#374151; min-height:22px; }
+
+/* responsive */
+@media (max-width:900px){
+  .toolbar { flex-wrap:wrap; gap:6px; }
+  .canvas-wrap { width:100%; }
+}
+
+/* small helper classes */
+.muted { color:#6b7280; font-size:0.95rem; }

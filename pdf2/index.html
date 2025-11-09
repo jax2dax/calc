@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Editor MVP - Client-Side PDF Annotation Tool</title>
+    <meta name="description" content="Free online PDF editor. Add text, images, and annotations to PDFs entirely in your browser. No uploads, no server, complete privacy.">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- PDF.js - Mozilla's PDF rendering library (v2.16.105 - stable legacy build) -->
+    <!-- Using version 2.16.105 because it's stable, well-tested, and doesn't require ES modules -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    
+    <!-- Fabric.js - Canvas manipulation library (v5.3.0 - stable) -->
+    <!-- Using 5.3.0 for stability and complete feature set without ES6 module issues -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+    
+    <!-- pdf-lib - PDF creation/editing library (v1.17.1) -->
+    <!-- This library merges annotations into the final PDF -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    
+    <!-- FileSaver.js - Helper for downloading files (v2.0.5) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>📄 PDF Editor MVP</h1>
+            <p class="subtitle">Client-side PDF annotation tool - Your files never leave your browser</p>
+        </header>
+
+        <!-- File Upload Section -->
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-box" id="uploadBox">
+                <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <h2>Drop PDF Here or Click to Upload</h2>
+                <p>Maximum recommended size: 30 MB</p>
+                <input type="file" id="fileInput" accept="application/pdf" aria-label="Upload PDF file">
+                <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+                    Choose PDF File
+                </button>
+            </div>
+        </div>
+
+        <!-- Editor Section (hidden initially) -->
+        <div class="editor-section" id="editorSection" style="display: none;">
+            <!-- Toolbar -->
+            <div class="toolbar" role="toolbar" aria-label="PDF editing tools">
+                <div class="toolbar-group">
+                    <button id="btnAddText" class="btn-tool" title="Add Text Box (Ctrl+T)" aria-label="Add text box">
+                        <span class="icon">T</span> Add Text
+                    </button>
+                    <button id="btnAddImage" class="btn-tool" title="Add Image" aria-label="Add image">
+                        <span class="icon">🖼️</span> Add Image
+                    </button>
+                    <button id="btnDelete" class="btn-tool" title="Delete Selected (Del)" aria-label="Delete selected object">
+                        <span class="icon">🗑️</span> Delete
+                    </button>
+                </div>
+
+                <div class="toolbar-group">
+                    <button id="btnUndo" class="btn-tool" title="Undo (Ctrl+Z)" aria-label="Undo last action">
+                        <span class="icon">↶</span> Undo
+                    </button>
+                    <button id="btnRedo" class="btn-tool" title="Redo (Ctrl+Y)" aria-label="Redo last undone action">
+                        <span class="icon">↷</span> Redo
+                    </button>
+                </div>
+
+                <div class="toolbar-group">
+                    <label for="zoomSelect" class="tool-label">Zoom:</label>
+                    <select id="zoomSelect" class="tool-select" aria-label="Zoom level">
+                        <option value="0.75">75%</option>
+                        <option value="1.0">100%</option>
+                        <option value="1.5" selected>150%</option>
+                        <option value="2.0">200%</option>
+                    </select>
+                </div>
+
+                <div class="toolbar-group">
+                    <button id="btnPrevPage" class="btn-tool" title="Previous Page" aria-label="Go to previous page">
+                        <span class="icon">←</span>
+                    </button>
+                    <span id="pageInfo" class="page-info" aria-live="polite">Page 1 of 1</span>
+                    <button id="btnNextPage" class="btn-tool" title="Next Page" aria-label="Go to next page">
+                        <span class="icon">→</span>
+                    </button>
+                </div>
+
+                <div class="toolbar-group">
+                    <button id="btnSave" class="btn-primary" title="Download Edited PDF" aria-label="Save and download PDF">
+                        💾 Save PDF
+                    </button>
+                    <button id="btnClear" class="btn-secondary" title="Clear All Annotations on Current Page" aria-label="Clear page annotations">
+                        Clear Page
+                    </button>
+                    <button id="btnNewFile" class="btn-secondary" title="Load New PDF" aria-label="Load new file">
+                        New File
+                    </button>
+                </div>
+            </div>
+
+            <!-- Canvas Container -->
+            <div class="canvas-container" id="canvasContainer">
+                <div class="canvas-wrapper">
+                    <!-- PDF rendering canvas (background) -->
+                    <canvas id="pdfCanvas"></canvas>
+                    <!-- Fabric.js overlay canvas (annotations) -->
+                    <canvas id="fabricCanvas"></canvas>
+                </div>
+            </div>
+
+            <!-- Status Messages -->
+            <div id="statusMessage" class="status-message" role="status" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <!-- Hidden file input for image upload -->
+    <input type="file" id="imageInput" accept="image/*" style="display: none;" aria-label="Upload image file">
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>

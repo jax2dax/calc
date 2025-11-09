@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Rate Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Growth Rate Calculator</h1>
+            <p>Calculate simple growth rates and compound annual growth rates (CAGR)</p>
+        </header>
+
+        <main>
+            <section class="calculator-section">
+                <h2>Simple Growth Rate</h2>
+                <div class="input-group">
+                    <label for="oldValue">Old Value:</label>
+                    <input type="number" id="oldValue" placeholder="Enter initial value" step="any">
+                </div>
+                <div class="input-group">
+                    <label for="newValue">New Value:</label>
+                    <input type="number" id="newValue" placeholder="Enter final value" step="any">
+                </div>
+                <button id="calculateSimple">Calculate Simple Growth Rate</button>
+                <div id="simpleResult" class="result"></div>
+            </section>
+
+            <section class="calculator-section">
+                <h2>Compound Annual Growth Rate (CAGR)</h2>
+                <div class="input-group">
+                    <label for="beginningValue">Beginning Value:</label>
+                    <input type="number" id="beginningValue" placeholder="Enter starting value" step="any">
+                </div>
+                <div class="input-group">
+                    <label for="endingValue">Ending Value:</label>
+                    <input type="number" id="endingValue" placeholder="Enter ending value" step="any">
+                </div>
+                <div class="input-group">
+                    <label for="years">Number of Years:</label>
+                    <input type="number" id="years" placeholder="Enter years" step="any" min="1">
+                </div>
+                <button id="calculateCAGR">Calculate CAGR</button>
+                <div id="cagrResult" class="result"></div>
+            </section>
+
+            <section class="calculator-section">
+                <h2>Population Density Calculator</h2>
+                <div class="input-group">
+                    <label for="population">Population:</label>
+                    <input type="number" id="population" placeholder="Enter total population" step="1" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="areaSqKm">Area (sq km):</label>
+                    <input type="number" id="areaSqKm" placeholder="Enter area in square kilometers" step="any" min="0.01">
+                </div>
+                <button id="calculatePopulationDensityBtn">Calculate Population Density</button>
+                <div id="populationDensityResult" class="result"></div>
+            </section>
+
+            <section class="calculator-section">
+                <h2>Population Growth</h2>
+                <div class="input-group">
+                    <label for="initialPopulation">Initial Population:</label>
+                    <input type="number" id="initialPopulation" placeholder="Enter initial population" step="1" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="finalPopulation">Final Population:</label>
+                    <input type="number" id="finalPopulation" placeholder="Enter final population" step="1" min="0">
+                </div>
+                <button id="calculatePopulationGrowthBtn">Calculate Population Growth</button>
+                <div id="populationGrowthResult" class="result"></div>
+            </section>
+
+            <section class="calculator-section">
+                <h2>Birth Rate</h2>
+                <div class="input-group">
+                    <label for="liveBirths">Live Births:</label>
+                    <input type="number" id="liveBirths" placeholder="Enter live births" step="1" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="midYearPopulationBirth">Mid-Year Population:</label>
+                    <input type="number" id="midYearPopulationBirth" placeholder="Enter mid-year population" step="1" min="0">
+                </div>
+                <button id="calculateBirthRateBtn">Calculate Birth Rate</button>
+                <div id="birthRateResult" class="result"></div>
+            </section>
+
+            <section class="calculator-section">
+                <h2>Death Rate</h2>
+                <div class="input-group">
+                    <label for="deaths">Deaths:</label>
+                    <input type="number" id="deaths" placeholder="Enter deaths" step="1" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="midYearPopulationDeath">Mid-Year Population:</label>
+                    <input type="number" id="midYearPopulationDeath" placeholder="Enter mid-year population" step="1" min="0">
+                </div>
+                <button id="calculateDeathRateBtn">Calculate Death Rate</button>
+                <div id="deathRateResult" class="result"></div>
+            </section>
+
+            <section class="calculator-section">
+                <h2>Net Migration Rate</h2>
+                <div class="input-group">
+                    <label for="immigrants">Immigrants:</label>
+                    <input type="number" id="immigrants" placeholder="Enter number of immigrants" step="1" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="emigrants">Emigrants:</label>
+                    <input type="number" id="emigrants" placeholder="Enter number of emigrants" step="1" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="midYearPopulationMigration">Mid-Year Population:</label>
+                    <input type="number" id="midYearPopulationMigration" placeholder="Enter mid-year population" step="1" min="0">
+                </div>
+                <button id="calculateNetMigrationRateBtn">Calculate Net Migration Rate</button>
+                <div id="netMigrationRateResult" class="result"></div>
+            </section>
+
+            <section class="calculator-section">
+                <h2>Dependency Ratio</h2>
+                <div class="input-group">
+                    <label for="dependentPopulation">Dependent Population (0-14 & 65+):</label>
+                    <input type="number" id="dependentPopulation" placeholder="Enter dependent population" step="1" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="workingAgePopulation">Working-Age Population (15-64):</label>
+                    <input type="number" id="workingAgePopulation" placeholder="Enter working-age population" step="1" min="0">
+                </div>
+                <button id="calculateDependencyRatioBtn">Calculate Dependency Ratio</button>
+                <div id="dependencyRatioResult" class="result"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by brain.js</p>
+        </footer>
+    </div>
+
+    <script src="brain.js"></script>
+    <script src="geography-calculator.js"></script>
+    <script src="census-calculator.js"></script>
+    <script>
+        // DOM elements
+        const oldValueInput = document.getElementById('oldValue');
+        const newValueInput = document.getElementById('newValue');
+        const beginningValueInput = document.getElementById('beginningValue');
+        const endingValueInput = document.getElementById('endingValue');
+        const yearsInput = document.getElementById('years');
+        const populationInput = document.getElementById('population');
+        const areaSqKmInput = document.getElementById('areaSqKm');
+
+        const initialPopulationInput = document.getElementById('initialPopulation');
+        const finalPopulationInput = document.getElementById('finalPopulation');
+        const liveBirthsInput = document.getElementById('liveBirths');
+        const midYearPopulationBirthInput = document.getElementById('midYearPopulationBirth');
+        const deathsInput = document.getElementById('deaths');
+        const midYearPopulationDeathInput = document.getElementById('midYearPopulationDeath');
+        const immigrantsInput = document.getElementById('immigrants');
+        const emigrantsInput = document.getElementById('emigrants');
+        const midYearPopulationMigrationInput = document.getElementById('midYearPopulationMigration');
+        const dependentPopulationInput = document.getElementById('dependentPopulation');
+        const workingAgePopulationInput = document.getElementById('workingAgePopulation');
+
+        const calculateSimpleBtn = document.getElementById('calculateSimple');
+        const calculateCAGRBtn = document.getElementById('calculateCAGR');
+        const calculatePopulationDensityBtn = document.getElementById('calculatePopulationDensityBtn');
+        const calculatePopulationGrowthBtn = document.getElementById('calculatePopulationGrowthBtn');
+        const calculateBirthRateBtn = document.getElementById('calculateBirthRateBtn');
+        const calculateDeathRateBtn = document.getElementById('calculateDeathRateBtn');
+        const calculateNetMigrationRateBtn = document.getElementById('calculateNetMigrationRateBtn');
+        const calculateDependencyRatioBtn = document.getElementById('calculateDependencyRatioBtn');
+
+        const simpleResultDiv = document.getElementById('simpleResult');
+        const cagrResultDiv = document.getElementById('cagrResult');
+        const populationDensityResultDiv = document.getElementById('populationDensityResult');
+        const populationGrowthResultDiv = document.getElementById('populationGrowthResult');
+        const birthRateResultDiv = document.getElementById('birthRateResult');
+        const deathRateResultDiv = document.getElementById('deathRateResult');
+        const netMigrationRateResultDiv = document.getElementById('netMigrationRateResult');
+        const dependencyRatioResultDiv = document.getElementById('dependencyRatioResult');
+
+        // Event listeners
+        calculateSimpleBtn.addEventListener('click', calculateSimpleGrowth);
+        calculateCAGRBtn.addEventListener('click', handleCalculateCAGR);
+        calculatePopulationDensityBtn.addEventListener('click', handleCalculatePopulationDensity);
+        calculatePopulationGrowthBtn.addEventListener('click', handleCalculatePopulationGrowth);
+        calculateBirthRateBtn.addEventListener('click', handleCalculateBirthRate);
+        calculateDeathRateBtn.addEventListener('click', handleCalculateDeathRate);
+        calculateNetMigrationRateBtn.addEventListener('click', handleCalculateNetMigrationRate);
+        calculateDependencyRatioBtn.addEventListener('click', handleCalculateDependencyRatio);
+
+        function calculateSimpleGrowth() {
+            const oldValue = parseFloat(oldValueInput.value);
+            const newValue = parseFloat(newValueInput.value);
+
+            // Validate inputs
+            if (!validateNumberInput(oldValue) || !validateNumberInput(newValue)) {
+                simpleResultDiv.innerHTML = '<p class="error">Please enter valid numbers for both values</p>';
+                return;
+            }
+
+            try {
+                const growthRate = calculateSimpleGrowthRate(oldValue, newValue);
+                const formattedRate = formatNumber(growthRate);
+                simpleResultDiv.innerHTML = `<p class="success">Simple Growth Rate: <strong>${formattedRate}%</strong></p>`;
+            } catch (error) {
+                simpleResultDiv.innerHTML = `<p class="error">${error.message}</p>`;
+            }
+        }
+
+        function handleCalculateCAGR() {
+            const beginningValue = parseFloat(beginningValueInput.value);
+            const endingValue = parseFloat(endingValueInput.value);
+            const years = parseFloat(yearsInput.value);
+
+            // Validate inputs
+            if (!validateNumberInput(beginningValue) || !validateNumberInput(endingValue) || !validateNumberInput(years)) {
+                cagrResultDiv.innerHTML = '<p class="error">Please enter valid numbers for all fields</p>';
+                return;
+            }
+
+            try {
+                const cagr = calculateCAGR(beginningValue, endingValue, years);
+                const formattedCAGR = formatNumber(cagr);
+                cagrResultDiv.innerHTML = `<p class="success">CAGR: <strong>${formattedCAGR}%</strong></p>`;
+            } catch (error) {
+                cagrResultDiv.innerHTML = `<p class="error">${error.message}</p>`;
+            }
+        }
+
+        function handleCalculatePopulationDensity() {
+            const population = parseFloat(populationInput.value);
+            const areaSqKm = parseFloat(areaSqKmInput.value);
+
+            if (!validateNumberInput(population) || !validateNumberInput(areaSqKm) || population < 0 || areaSqKm <= 0) {
+                populationDensityResultDiv.innerHTML = '<p class="error">Please enter valid positive numbers for population and area.</p>';
+                return;
+            }
+
+            try {
+                const result = calculatePopulationDensity(population, areaSqKm);
+                populationDensityResultDiv.innerHTML = `
+                    <p class="success">Population Density: <strong>${result.density} people/km²</strong></p>
+                    <p>${result.interpretation}</p>
+                `;
+            } catch (error) {
+                populationDensityResultDiv.innerHTML = `<p class="error">${error.message}</p>`;
+            }
+        }
+
+        function handleCalculatePopulationGrowth() {
+            const initialPopulation = parseFloat(initialPopulationInput.value);
+            const finalPopulation = parseFloat(finalPopulationInput.value);
+
+            if (!validateNumberInput(initialPopulation) || !validateNumberInput(finalPopulation) || initialPopulation < 0 || finalPopulation < 0) {
+                populationGrowthResultDiv.innerHTML = '<p class="error">Please enter valid positive numbers for initial and final population.</p>';
+                return;
+            }
+
+            try {
+                const growth = calculatePopulationGrowth(initialPopulation, finalPopulation);
+                const formattedGrowth = formatNumber(growth);
+                populationGrowthResultDiv.innerHTML = `<p class="success">Population Growth: <strong>${formattedGrowth}%</strong></p>`;
+            } catch (error) {
+                populationGrowthResultDiv.innerHTML = `<p class="error">${error.message}</p>`;
+            }
+        }
+
+        function handleCalculateBirthRate() {
+            const liveBirths = parseFloat(liveBirthsInput.value);
+            const midYearPopulation = parseFloat(midYearPopulationBirthInput.value);
+
+            if (!validateNumberInput(liveBirths) || !validateNumberInput(midYearPopulation) || liveBirths < 0 || midYearPopulation <= 0) {
+                birthRateResultDiv.innerHTML = '<p class="error">Please enter valid positive numbers for live births and mid-year population.</p>';
+                return;
+            }
+
+            try {
+                const birthRate = calculateBirthRate(liveBirths, midYearPopulation);
+                const formattedBirthRate = formatNumber(birthRate);
+                birthRateResultDiv.innerHTML = `<p class="success">Birth Rate: <strong>${formattedBirthRate} per 1,000</strong></p>`;
+            } catch (error) {
+                birthRateResultDiv.innerHTML = `<p class="error">${error.message}</p>`;
+            }
+        }
+
+        function handleCalculateDeathRate() {
+            const deaths = parseFloat(deathsInput.value);
+            const midYearPopulation = parseFloat(midYearPopulationDeathInput.value);
+
+            if (!validateNumberInput(deaths) || !validateNumberInput(midYearPopulation) || deaths < 0 || midYearPopulation <= 0) {
+                deathRateResultDiv.innerHTML = '<p class="error">Please enter valid positive numbers for deaths and mid-year population.</p>';
+                return;
+            }
+
+            try {
+                const deathRate = calculateDeathRate(deaths, midYearPopulation);
+                const formattedDeathRate = formatNumber(deathRate);
+                deathRateResultDiv.innerHTML = `<p class="success">Death Rate: <strong>${formattedDeathRate} per 1,000</strong></p>`;
+            } catch (error) {
+                deathRateResultDiv.innerHTML = `<p class="error">${error.message}</p>`;
+            }
+        }
+
+        function handleCalculateNetMigrationRate() {
+            const immigrants = parseFloat(immigrantsInput.value);
+            const emigrants = parseFloat(emigrantsInput.value);
+            const midYearPopulation = parseFloat(midYearPopulationMigrationInput.value);
+
+            if (!validateNumberInput(immigrants) || !validateNumberInput(emigrants) || !validateNumberInput(midYearPopulation) || immigrants < 0 || emigrants < 0 || midYearPopulation <= 0) {
+                netMigrationRateResultDiv.innerHTML = '<p class="error">Please enter valid positive numbers for all fields.</p>';
+                return;
+            }
+
+            try {
+                const netMigrationRate = calculateNetMigrationRate(immigrants, emigrants, midYearPopulation);
+                const formattedNetMigrationRate = formatNumber(netMigrationRate);
+                netMigrationRateResultDiv.innerHTML = `<p class="success">Net Migration Rate: <strong>${formattedNetMigrationRate} per 1,000</strong></p>`;
+            } catch (error) {
+                netMigrationRateResultDiv.innerHTML = `<p class="error">${error.message}</p>`;
+            }
+        }
+
+        function handleCalculateDependencyRatio() {
+            const dependentPopulation = parseFloat(dependentPopulationInput.value);
+            const workingAgePopulation = parseFloat(workingAgePopulationInput.value);
+
+            if (!validateNumberInput(dependentPopulation) || !validateNumberInput(workingAgePopulation) || dependentPopulation < 0 || workingAgePopulation <= 0) {
+                dependencyRatioResultDiv.innerHTML = '<p class="error">Please enter valid positive numbers for dependent and working-age population.</p>';
+                return;
+            }
+
+            try {
+                const dependencyRatio = calculateDependencyRatio(dependentPopulation, workingAgePopulation);
+                const formattedDependencyRatio = formatNumber(dependencyRatio);
+                dependencyRatioResultDiv.innerHTML = `<p class="success">Dependency Ratio: <strong>${formattedDependencyRatio}%</strong></p>`;
+            } catch (error) {
+                dependencyRatioResultDiv.innerHTML = `<p class="error">${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimal PDF Editor</title>
+<style>
+  body { font-family: sans-serif; margin: 20px; }
+  #pdf-container { position: relative; width: 600px; height: 800px; border: 1px solid #ccc; }
+  #pdf-canvas, #annotation-canvas { position: absolute; top: 0; left: 0; }
+  #controls { margin-top: 10px; display: flex; gap: 10px; }
+  button { padding: 5px 10px; }
+</style>
+</head>
+<body>
+
+<h2>Minimal PDF Editor</h2>
+<input type="file" id="file-input" accept="application/pdf" />
+<div id="pdf-container">
+  <canvas id="pdf-canvas"></canvas>
+  <canvas id="annotation-canvas"></canvas>
+</div>
+<div id="controls">
+  <button id="add-text">Add Text</button>
+  <button id="save-pdf">Save PDF</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+<script src="app.min.js"></script>
+</body>
+</html>
