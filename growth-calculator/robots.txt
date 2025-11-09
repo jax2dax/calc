@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://https://calcsuite-three.vercel.app/
+Sitemap: https://calcsuite-three.vercel.app/
