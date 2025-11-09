@@ -3,148 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Growth Rate Calculator</title>
+    <meta name="description" content="Comprehensive calculator suite for growth rates, population statistics, environmental footprint, and financial calculations. Calculate CAGR, population density, birth/death rates, and more with our user-friendly tools.">
+    <meta name="keywords" content="growth calculator, CAGR, population density, birth rate, death rate, environmental footprint, financial calculator, census calculator">
+    <meta name="author" content="Growth Calculator Suite">
+    <meta name="robots" content="index, follow">
+    <title>Growth Calculator Suite - Financial, Population, and Environmental Calculators</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Growth Rate Calculator</h1>
-            <p>Calculate simple growth rates and compound annual growth rates (CAGR)</p>
-        </header>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>Growth Calculator Suite</h1>
+                <p>Explore various calculators</p>
+            </header>
+            <nav class="calculator-nav">
+                <section class="nav-category">
+                    <h3>Financial Calculators</h3>
+                    <ul>
+                        <li><a href="#simple-growth" class="tab-link active" data-index="0">Simple Growth Rate</a></li>
+                        <li><a href="#cagr" class="tab-link" data-index="1">Compound Annual Growth Rate</a></li>
+                    </ul>
+                </section>
+                <section class="nav-category">
+                    <h3>Geography Calculators</h3>
+                    <ul>
+                        <li><a href="#population-density" class="tab-link" data-index="2">Population Density</a></li>
+                    </ul>
+                </section>
+                <section class="nav-category">
+                    <h3>Census Calculators</h3>
+                    <ul>
+                        <li><a href="#population-growth" class="tab-link" data-index="3">Population Growth</a></li>
+                        <li><a href="#birth-rate" class="tab-link" data-index="4">Birth Rate</a></li>
+                        <li><a href="#death-rate" class="tab-link" data-index="5">Death Rate</a></li>
+                        <li><a href="#net-migration" class="tab-link" data-index="6">Net Migration Rate</a></li>
+                        <li><a href="#dependency-ratio" class="tab-link" data-index="7">Dependency Ratio</a></li>
+                    </ul>
+                </section>
+                <section class="nav-category">
+                    <h3>Environmental Calculators</h3>
+                    <ul>
+                        <li><a href="#environmental-footprint" class="tab-link" data-index="8">Environmental Footprint</a></li>
+                    </ul>
+                </section>
+            </nav>
+        </aside>
 
-        <main>
-            <section class="calculator-section">
-                <h2>Simple Growth Rate</h2>
-                <div class="input-group">
-                    <label for="oldValue">Old Value:</label>
-                    <input type="number" id="oldValue" placeholder="Enter initial value" step="any">
-                </div>
-                <div class="input-group">
-                    <label for="newValue">New Value:</label>
-                    <input type="number" id="newValue" placeholder="Enter final value" step="any">
-                </div>
-                <button id="calculateSimple">Calculate Simple Growth Rate</button>
-                <div id="simpleResult" class="result"></div>
-            </section>
+        <main class="main-content">
+            <div class="calculator-container">
+                <button class="nav-arrow prev" aria-label="Previous calculator">&larr;</button>
+                <div class="calculator-slider">
+                    <div id="simple-growth" class="calculator-slide">
+                        <section class="calculator-section">
+                            <h2>Simple Growth Rate Calculator</h2>
+                            <p>Calculate the percentage change between two values over a period.</p>
+                            <div class="input-group">
+                                <label for="oldValue">Old Value:</label>
+                                <input type="number" id="oldValue" placeholder="Enter initial value" step="any">
+                            </div>
+                            <div class="input-group">
+                                <label for="newValue">New Value:</label>
+                                <input type="number" id="newValue" placeholder="Enter final value" step="any">
+                            </div>
+                            <button id="calculateSimple">Calculate Simple Growth Rate</button>
+                            <div id="simpleResult" class="result"></div>
+                        </section>
+                    </div>
 
-            <section class="calculator-section">
-                <h2>Compound Annual Growth Rate (CAGR)</h2>
-                <div class="input-group">
-                    <label for="beginningValue">Beginning Value:</label>
-                    <input type="number" id="beginningValue" placeholder="Enter starting value" step="any">
-                </div>
-                <div class="input-group">
-                    <label for="endingValue">Ending Value:</label>
-                    <input type="number" id="endingValue" placeholder="Enter ending value" step="any">
-                </div>
-                <div class="input-group">
-                    <label for="years">Number of Years:</label>
-                    <input type="number" id="years" placeholder="Enter years" step="any" min="1">
-                </div>
-                <button id="calculateCAGR">Calculate CAGR</button>
-                <div id="cagrResult" class="result"></div>
-            </section>
+                    <div id="cagr" class="calculator-slide">
+                        <section class="calculator-section">
+                            <h2>Compound Annual Growth Rate (CAGR) Calculator</h2>
+                            <p>Calculate the mean annual growth rate of an investment over a specified time period.</p>
+                            <div class="input-group">
+                                <label for="beginningValue">Beginning Value:</label>
+                                <input type="number" id="beginningValue" placeholder="Enter starting value" step="any">
+                            </div>
+                            <div class="input-group">
+                                <label for="endingValue">Ending Value:</label>
+                                <input type="number" id="endingValue" placeholder="Enter ending value" step="any">
+                            </div>
+                            <div class="input-group">
+                                <label for="years">Number of Years:</label>
+                                <input type="number" id="years" placeholder="Enter years" step="any" min="1">
+                            </div>
+                            <button id="calculateCAGR">Calculate CAGR</button>
+                            <div id="cagrResult" class="result"></div>
+                        </section>
+                    </div>
 
-            <section class="calculator-section">
-                <h2>Population Density Calculator</h2>
-                <div class="input-group">
-                    <label for="population">Population:</label>
-                    <input type="number" id="population" placeholder="Enter total population" step="1" min="0">
-                </div>
-                <div class="input-group">
-                    <label for="areaSqKm">Area (sq km):</label>
-                    <input type="number" id="areaSqKm" placeholder="Enter area in square kilometers" step="any" min="0.01">
-                </div>
-                <button id="calculatePopulationDensityBtn">Calculate Population Density</button>
-                <div id="populationDensityResult" class="result"></div>
-            </section>
+                    <div id="population-density" class="calculator-slide">
+                        <section class="calculator-section">
+                            <h2>Population Density Calculator</h2>
+                            <p>Calculate population density and understand its implications for urban planning and resource allocation.</p>
+                            <div class="input-group">
+                                <label for="population">Population:</label>
+                                <input type="number" id="population" placeholder="Enter total population" step="1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="areaSqKm">Area (sq km):</label>
+                                <input type="number" id="areaSqKm" placeholder="Enter area in square kilometers" step="any" min="0.01">
+                            </div>
+                            <button id="calculatePopulationDensityBtn">Calculate Population Density</button>
+                            <div id="populationDensityResult" class="result"></div>
+                        </section>
+                    </div>
 
-            <section class="calculator-section">
-                <h2>Population Growth</h2>
-                <div class="input-group">
-                    <label for="initialPopulation">Initial Population:</label>
-                    <input type="number" id="initialPopulation" placeholder="Enter initial population" step="1" min="0">
-                </div>
-                <div class="input-group">
-                    <label for="finalPopulation">Final Population:</label>
-                    <input type="number" id="finalPopulation" placeholder="Enter final population" step="1" min="0">
-                </div>
-                <button id="calculatePopulationGrowthBtn">Calculate Population Growth</button>
-                <div id="populationGrowthResult" class="result"></div>
-            </section>
+                    <div id="population-growth" class="calculator-slide">
+                        <section class="calculator-section">
+                            <h2>Population Growth Calculator</h2>
+                            <p>Calculate the percentage growth in population between two time periods.</p>
+                            <div class="input-group">
+                                <label for="initialPopulation">Initial Population:</label>
+                                <input type="number" id="initialPopulation" placeholder="Enter initial population" step="1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="finalPopulation">Final Population:</label>
+                                <input type="number" id="finalPopulation" placeholder="Enter final population" step="1" min="0">
+                            </div>
+                            <button id="calculatePopulationGrowthBtn">Calculate Population Growth</button>
+                            <div id="populationGrowthResult" class="result"></div>
+                        </section>
+                    </div>
 
-            <section class="calculator-section">
-                <h2>Birth Rate</h2>
-                <div class="input-group">
-                    <label for="liveBirths">Live Births:</label>
-                    <input type="number" id="liveBirths" placeholder="Enter live births" step="1" min="0">
-                </div>
-                <div class="input-group">
-                    <label for="midYearPopulationBirth">Mid-Year Population:</label>
-                    <input type="number" id="midYearPopulationBirth" placeholder="Enter mid-year population" step="1" min="0">
-                </div>
-                <button id="calculateBirthRateBtn">Calculate Birth Rate</button>
-                <div id="birthRateResult" class="result"></div>
-            </section>
+                    <div id="birth-rate" class="calculator-slide">
+                        <section class="calculator-section">
+                            <h2>Birth Rate Calculator</h2>
+                            <p>Calculate the number of live births per 1,000 people in a population.</p>
+                            <div class="input-group">
+                                <label for="liveBirths">Live Births:</label>
+                                <input type="number" id="liveBirths" placeholder="Enter live births" step="1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="midYearPopulationBirth">Mid-Year Population:</label>
+                                <input type="number" id="midYearPopulationBirth" placeholder="Enter mid-year population" step="1" min="0">
+                            </div>
+                            <button id="calculateBirthRateBtn">Calculate Birth Rate</button>
+                            <div id="birthRateResult" class="result"></div>
+                        </section>
+                    </div>
 
-            <section class="calculator-section">
-                <h2>Death Rate</h2>
-                <div class="input-group">
-                    <label for="deaths">Deaths:</label>
-                    <input type="number" id="deaths" placeholder="Enter deaths" step="1" min="0">
-                </div>
-                <div class="input-group">
-                    <label for="midYearPopulationDeath">Mid-Year Population:</label>
-                    <input type="number" id="midYearPopulationDeath" placeholder="Enter mid-year population" step="1" min="0">
-                </div>
-                <button id="calculateDeathRateBtn">Calculate Death Rate</button>
-                <div id="deathRateResult" class="result"></div>
-            </section>
+                    <div id="death-rate" class="calculator-slide">
+                        <section class="calculator-section">
+                            <h2>Death Rate Calculator</h2>
+                            <p>Calculate the number of deaths per 1,000 people in a population.</p>
+                            <div class="input-group">
+                                <label for="deaths">Deaths:</label>
+                                <input type="number" id="deaths" placeholder="Enter deaths" step="1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="midYearPopulationDeath">Mid-Year Population:</label>
+                                <input type="number" id="midYearPopulationDeath" placeholder="Enter mid-year population" step="1" min="0">
+                            </div>
+                            <button id="calculateDeathRateBtn">Calculate Death Rate</button>
+                            <div id="deathRateResult" class="result"></div>
+                        </section>
+                    </div>
 
-            <section class="calculator-section">
-                <h2>Net Migration Rate</h2>
-                <div class="input-group">
-                    <label for="immigrants">Immigrants:</label>
-                    <input type="number" id="immigrants" placeholder="Enter number of immigrants" step="1" min="0">
-                </div>
-                <div class="input-group">
-                    <label for="emigrants">Emigrants:</label>
-                    <input type="number" id="emigrants" placeholder="Enter number of emigrants" step="1" min="0">
-                </div>
-                <div class="input-group">
-                    <label for="midYearPopulationMigration">Mid-Year Population:</label>
-                    <input type="number" id="midYearPopulationMigration" placeholder="Enter mid-year population" step="1" min="0">
-                </div>
-                <button id="calculateNetMigrationRateBtn">Calculate Net Migration Rate</button>
-                <div id="netMigrationRateResult" class="result"></div>
-            </section>
+                    <div id="net-migration" class="calculator-slide">
+                        <section class="calculator-section">
+                            <h2>Net Migration Rate Calculator</h2>
+                            <p>Calculate the difference between immigrants and emigrants per 1,000 people.</p>
+                            <div class="input-group">
+                                <label for="immigrants">Immigrants:</label>
+                                <input type="number" id="immigrants" placeholder="Enter number of immigrants" step="1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="emigrants">Emigrants:</label>
+                                <input type="number" id="emigrants" placeholder="Enter number of emigrants" step="1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="midYearPopulationMigration">Mid-Year Population:</label>
+                                <input type="number" id="midYearPopulationMigration" placeholder="Enter mid-year population" step="1" min="0">
+                            </div>
+                            <button id="calculateNetMigrationRateBtn">Calculate Net Migration Rate</button>
+                            <div id="netMigrationRateResult" class="result"></div>
+                        </section>
+                    </div>
 
-            <section class="calculator-section">
-                <h2>Dependency Ratio</h2>
-                <div class="input-group">
-                    <label for="dependentPopulation">Dependent Population (0-14 & 65+):</label>
-                    <input type="number" id="dependentPopulation" placeholder="Enter dependent population" step="1" min="0">
+                    <div id="dependency-ratio" class="calculator-slide">
+                        <section class="calculator-section">
+                            <h2>Dependency Ratio Calculator</h2>
+                            <p>Calculate the ratio of dependent population to working-age population.</p>
+                            <div class="input-group">
+                                <label for="dependentPopulation">Dependent Population (0-14 & 65+):</label>
+                                <input type="number" id="dependentPopulation" placeholder="Enter dependent population" step="1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="workingAgePopulation">Working-Age Population (15-64):</label>
+                                <input type="number" id="workingAgePopulation" placeholder="Enter working-age population" step="1" min="0">
+                            </div>
+                            <button id="calculateDependencyRatioBtn">Calculate Dependency Ratio</button>
+                            <div id="dependencyRatioResult" class="result"></div>
+                        </section>
+                    </div>
+
+                    <div id="environmental-footprint" class="calculator-slide">
+                        <section class="calculator-section environmental">
+                            <h2>Environmental Footprint Calculator</h2>
+                            <p>Calculate your annual carbon dioxide equivalent emissions based on energy, water, food, and waste usage.</p>
+                            <div class="input-group energy">
+                                <label for="energy">Energy Use (kWh):</label>
+                                <input type="number" id="energy" name="energy" placeholder="1000">
+                            </div>
+                            <div class="input-group water">
+                                <label for="water">Water Use (liters):</label>
+                                <input type="number" id="water" name="water" placeholder="5000">
+                            </div>
+                            <div class="input-group food">
+                                <label for="food">Food Consumption (kg):</label>
+                                <input type="number" id="food" name="food" placeholder="500">
+                            </div>
+                            <div class="input-group waste">
+                                <label for="waste">Waste (kg):</label>
+                                <input type="number" id="waste" name="waste" placeholder="200">
+                            </div>
+                            <button type="button" id="calculateFootprint" class="calculate-footprint">Calculate Footprint</button>
+                            <div class="result-container">
+                                <div class="result success" id="ecoResult">
+                                    <p>Your ecological footprint is: <strong>--</strong> kg CO₂e/year</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label for="workingAgePopulation">Working-Age Population (15-64):</label>
-                    <input type="number" id="workingAgePopulation" placeholder="Enter working-age population" step="1" min="0">
-                </div>
-                <button id="calculateDependencyRatioBtn">Calculate Dependency Ratio</button>
-                <div id="dependencyRatioResult" class="result"></div>
-            </section>
+                <button class="nav-arrow next" aria-label="Next calculator">&rarr;</button>
+            </div>
         </main>
-
-        <footer>
-            <p>Powered by brain.js</p>
-        </footer>
     </div>
+
+    <footer>
+        <p>Powered by brain.js - Comprehensive Calculator Suite for Growth, Population, and Environmental Analysis</p>
+    </footer>
 
     <script src="brain.js"></script>
     <script src="geography-calculator.js"></script>
     <script src="census-calculator.js"></script>
     <script>
-        // DOM elements
+        // Calculator slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.calculator-slide');
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const prevBtn = document.querySelector('.nav-arrow.prev');
+        const nextBtn = document.querySelector('.nav-arrow.next');
+        const slider = document.querySelector('.calculator-slider');
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateTabLinks();
+            updateNavButtons();
+        }
+
+        function updateTabLinks() {
+            tabLinks.forEach((link, index) => {
+                link.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function updateNavButtons() {
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+        }
+
+        function goToSlide(index) {
+            if (index >= 0 && index < slides.length) {
+                currentSlide = index;
+                updateSlider();
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlider();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        }
+
+        // Event listeners for navigation
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        tabLinks.forEach((link, index) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                goToSlide(index);
+            });
+        });
+
+        // Initialize
+        updateSlider();
+
+        // DOM elements for calculators
         const oldValueInput = document.getElementById('oldValue');
         const newValueInput = document.getElementById('newValue');
         const beginningValueInput = document.getElementById('beginningValue');
@@ -173,6 +329,7 @@
         const calculateDeathRateBtn = document.getElementById('calculateDeathRateBtn');
         const calculateNetMigrationRateBtn = document.getElementById('calculateNetMigrationRateBtn');
         const calculateDependencyRatioBtn = document.getElementById('calculateDependencyRatioBtn');
+        const calculateFootprintBtn = document.getElementById('calculateFootprint');
 
         const simpleResultDiv = document.getElementById('simpleResult');
         const cagrResultDiv = document.getElementById('cagrResult');
@@ -183,7 +340,7 @@
         const netMigrationRateResultDiv = document.getElementById('netMigrationRateResult');
         const dependencyRatioResultDiv = document.getElementById('dependencyRatioResult');
 
-        // Event listeners
+        // Event listeners for calculators
         calculateSimpleBtn.addEventListener('click', calculateSimpleGrowth);
         calculateCAGRBtn.addEventListener('click', handleCalculateCAGR);
         calculatePopulationDensityBtn.addEventListener('click', handleCalculatePopulationDensity);
@@ -192,6 +349,7 @@
         calculateDeathRateBtn.addEventListener('click', handleCalculateDeathRate);
         calculateNetMigrationRateBtn.addEventListener('click', handleCalculateNetMigrationRate);
         calculateDependencyRatioBtn.addEventListener('click', handleCalculateDependencyRatio);
+        calculateFootprintBtn.addEventListener('click', handleCalculateFootprint);
 
         function calculateSimpleGrowth() {
             const oldValue = parseFloat(oldValueInput.value);
@@ -340,6 +498,20 @@
                 dependencyRatioResultDiv.innerHTML = `<p class="success">Dependency Ratio: <strong>${formattedDependencyRatio}%</strong></p>`;
             } catch (error) {
                 dependencyRatioResultDiv.innerHTML = `<p class="error">${error.message}</p>`;
+            }
+        }
+
+        function handleCalculateFootprint() {
+            const energy = parseFloat(document.getElementById('energy').value) || 0;
+            const water = parseFloat(document.getElementById('water').value) || 0;
+            const food = parseFloat(document.getElementById('food').value) || 0;
+            const waste = parseFloat(document.getElementById('waste').value) || 0;
+
+            try {
+                const result = calculateEnvironmentalFootprint(energy, water, food, waste);
+                updateResultDisplay(result, 'ecoResult');
+            } catch (error) {
+                document.getElementById('ecoResult').innerHTML = `<p class="error">${error.message}</p>`;
             }
         }
     </script>
